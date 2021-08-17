@@ -19,10 +19,10 @@ const mapping = {
 app.get('/photos', (req: Request, res: Response) => {
     const photoType: string[] = req.query.photo as string[];
     const photoList = photoType.filter((value) => Object.values(PhotoTypes).includes(value as PhotoTypes))
-        .map((value) => mapping[value])
+        .map((value) => mapping[value as PhotoTypes])
         .flat();
     if (photoList.length === 0) {
-        return "error"
+        return "error";
     }
     const shuffled = shuffle(photoList);
 
