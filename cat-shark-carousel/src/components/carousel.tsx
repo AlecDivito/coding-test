@@ -14,7 +14,7 @@ interface IProps {
     onJump: (index: number) => void;
 }
 
-const Carousel: React.FC<IProps> = ({ images, activeIndex, onCarousel, onJump }) => {
+const Carousel = ({ images, activeIndex, onCarousel, onJump }: IProps) => {
 
     const computeClassname = (index: number): string => {
         if (index === activeIndex) {
@@ -35,13 +35,13 @@ const Carousel: React.FC<IProps> = ({ images, activeIndex, onCarousel, onJump })
         <div>
             <ul className="carousel">
                 {images.map((src, index) =>
-                    <li className={`slide ${computeClassname(index)}`} key={src}>
+                    <li className={`slide ${computeClassname(index)}`} data-testid={src} key={src}>
                         <img src={src} alt="" />
                     </li>
                 )}
             </ul>
             <ul className="flex justify-center">
-                {images.map((_, index) => <li className="p-1" onClick={() => onJump(index)}>{index}</li>)}
+                {images.map((value, index) => <li className="p-1" key={value} onClick={() => onJump(index)}>{index + 1}</li>)}
             </ul>
         </div>
         <button onClick={() => onCarousel(IChange.UP)}>

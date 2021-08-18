@@ -25,7 +25,7 @@ describe('carousel smoke test', () => {
         expect(screen.getByText('Left')).toBeInTheDocument();
         expect(screen.getByText('Right')).toBeInTheDocument();
         images.forEach((_, index) => {
-            expect(screen.getByText(index)).toBeInTheDocument();
+            expect(screen.getByText(index + 1)).toBeInTheDocument();
         })
     });
 
@@ -47,7 +47,7 @@ describe('carousel smoke test', () => {
         const listItem = screen.getByText('1');
         expect(listItem).toBeInTheDocument();
         userEvent.click(listItem);
-        expect(jump).toBeCalledWith(1);
+        expect(jump).toBeCalledWith(0);
     })
 })
 
