@@ -46,8 +46,8 @@ const Pagination = ({ array, activeItem, pages = 5, onClick }: IProps) => {
     return <ul className="pagination flex justify-center">
         {firstDots ?
             <React.Fragment>
-                <li onClick={() => onClick(0)}>1</li>
-                <li>...</li>
+                <li className="p-1" onClick={() => onClick(0)}>1</li>
+                <li className="p-1">...</li>
             </React.Fragment>
             : null
         }
@@ -61,8 +61,8 @@ const Pagination = ({ array, activeItem, pages = 5, onClick }: IProps) => {
         )}
         {lastDots ?
             <React.Fragment>
-                <li>...</li>
-                <li onClick={() => onClick(array.length - 1)}>{array.length}</li>
+                <li className="p-1">...</li>
+                <li className="p-1" onClick={() => onClick(array.length - 1)}>{array.length}</li>
             </React.Fragment>
             : null
         }

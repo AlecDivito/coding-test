@@ -34,6 +34,12 @@ ul {
 :root {
   --carousel-width: 1024px;
   --carousel-height: 683px;
+  --dark-color: #444444;
+  --light-color: #F0F0F0;
+}
+
+* {
+  color: var(--text-color, #444444);
 }
 
 
@@ -54,6 +60,10 @@ ul {
   text-align: center;
   background-color: burlywood;
   font-weight: bold;
+}
+
+.pagination * {
+  font-style: italic;
 }
 
 .slide {
@@ -104,16 +114,21 @@ ul {
 }
 
 .btn {
-  background-color: #4CAF50; /* Green */
   border: none;
-  color: white;
-  padding: 15px 32px;
+  background-color: var(--light-color, #F0F0F0);
+  border-radius: 1.5rem;
+  padding: 4px 12px;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 16px;
 }
 
 .btn.btn--active {
-  background-color: aqua;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+
+.btn.btn--plain {
+  background-color: transparent;
+  color: var(--dark-color);
+  font-style: italic;
 }
