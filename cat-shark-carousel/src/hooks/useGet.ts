@@ -46,12 +46,12 @@ function useGet<T = any, P = any>(props: IProps): [IState<T, P>, (action: Partia
                 const response = await fetch(generatedUrl, { method: 'GET', signal: abortController.signal });
                 const data = await response.json();
                 if (!response.ok) {
-                    throw new Error(data)
+                    throw new Error(JSON.stringify(data))
                 }
                 dispatch({ data, isLoading: false, errors: undefined });
             } catch (errors) {
                 if (!abortController.signal.aborted) {
-                    dispatch({ errors: errors.message, isLoading: false, data: undefined });
+                    dispatch({ errors: JSON.parse(errors.message), isLoading: false, data: undefined });
                 }
             }
         };
