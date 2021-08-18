@@ -37,7 +37,7 @@ const Index = () => {
                 <h1>🐈 Pictures of Ferocious Beasts 🦈</h1>
                 <h2>
                     The ultimate repository, currently showing
-                    {state.photoTypes.length > 0 ? ` ${state.photoTypes[0].toLocaleLowerCase()}s ` : "nothing"}
+                    {state.photoTypes.length > 0 ? ` ${state.photoTypes[0].toLocaleLowerCase()}s ` : " nothing"}
                     {state.photoTypes.length > 1 ? ` and ${state.photoTypes[1].toLocaleLowerCase()}s` : ""}
                 </h2>
             </header>
