@@ -1,5 +1,5 @@
 import path from 'path';
-import express, { Application, Request, Response } from 'express';
+import express, { Application, NextFunction, Request, Response } from 'express';
 import { catsList, sharksList } from './database';
 import { shuffle } from './util';
 
@@ -16,18 +16,28 @@ const mapping = {
     [PhotoTypes.CAT]: catsList,
 }
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET");
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    next();
+})
+
 app.get('/photos', (req: Request, res: Response) => {
-    const photoType: string[] = req.query.photo as string[];
-    const photoList = photoType.filter((value) => Object.values(PhotoTypes).includes(value as PhotoTypes))
+    let photoTypes: undefined | string | string[] = req.query.types as string[];
+    if (!photoTypes) {
+        photoTypes = [];
+    } else if (!Array.isArray(photoTypes)) {
+        photoTypes = [photoTypes];
+    }
+    const photoList = photoTypes.filter((value) => Object.values(PhotoTypes).includes(value as PhotoTypes))
         .map((value) => mapping[value as PhotoTypes])
         .flat();
-    if (photoList.length === 0) {
-        return "error";
-    }
-    const shuffled = shuffle(photoList);
+
+    shuffle(photoList);
 
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(shuffled);
+    res.status(200).json(photoList).send();
 })
 
 app.use(express.static(path.join(__dirname, 'build')));
@@ -35,4 +45,5 @@ app.get('/', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+console.log(`Running server on localhost:${port}`)
 app.listen(port);

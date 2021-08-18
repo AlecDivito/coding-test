@@ -6,6 +6,7 @@
   "scripts": {
     "start": "tsc src/index.ts && node dist/index.js",
     "serve": "node dist/index.js",
+    "build": "tsc ./src/index.ts --esModuleInterop true -outDir dist",
     "test": "test"
   },
   "keywords": [
