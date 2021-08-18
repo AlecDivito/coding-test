@@ -4,7 +4,7 @@ enum Endpoint {
     PHOTOS
 }
 
-const api = "http://localhost:3000";
+const api = process.env.NODE_ENV === 'development' ? "http://localhost:3000" : "";
 const Urls = {
     [Endpoint.PHOTOS]: `${api}/photos`
 };
