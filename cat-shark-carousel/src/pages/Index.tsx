@@ -36,14 +36,6 @@ const Index = () => {
             <header>
                 <h1>Dog and Sharks</h1>
             </header>
-            <Loading isLoading={getState.isLoading}>
-                <Carousel
-                    activeIndex={state.activeIndex}
-                    images={getState.isLoading ? [] : getState.data}
-                    onCarousel={updateIndex}
-                    onJump={(activeIndex) => updateState({ ...state, ...{ activeIndex } })}
-                />
-            </Loading>
             <section>
                 <Button active={state.photoTypes.includes(PhotoType.CAT)}
                     onClick={() => toggle(PhotoType.CAT)}
@@ -56,6 +48,14 @@ const Index = () => {
                     Sharks
                 </Button>
             </section>
+            <Loading isLoading={getState.isLoading}>
+                <Carousel
+                    activeIndex={state.activeIndex}
+                    images={getState.isLoading ? [] : getState.data}
+                    onCarousel={updateIndex}
+                    onJump={(activeIndex) => updateState({ ...state, ...{ activeIndex } })}
+                />
+            </Loading>
         </main>
     );
 }

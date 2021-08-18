@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import useKeyboard from '../hooks/useKeyboard';
 import { Key } from '../types/keyboard';
+import Button from './button';
 import Pagination from './pagination';
-// import ChevronLeft from '../assets/chevron_left.svg';
-// import ChevronRight from '../assets/chevron_right.svg';
+import ChevronLeft from '../assets/chevron_left.svg';
+import ChevronRight from '../assets/chevron_right.svg';
 
 export enum IChange {
     UP = 1,
@@ -38,25 +39,25 @@ const Carousel = ({ images, activeIndex, onCarousel, onJump }: IProps) => {
         return "";
     }
 
-    return <section className="flex justify-around">
-        <button onClick={() => onCarousel(IChange.DOWN)}>
-            {/* <ChevronLeft /> */}
-            Left
-        </button>
-        <div>
-            <ul className="carousel">
-                {images.map((src, index) =>
-                    <li className={`slide ${computeClassname(index)}`} data-testid={src} key={src}>
-                        <img src={src} alt="" />
-                    </li>
-                )}
-            </ul>
+    return <section className="flex justify-around flex-columns">
+        <ul className="carousel">
+            {images.map((src, index) =>
+                <li className={`slide ${computeClassname(index)}`} data-testid={src} key={src}>
+                    <img src={src} alt="" />
+                </li>
+            )}
+        </ul>
+        <div className="flex justify-center">
+            <Button plain={true} onClick={() => onCarousel(IChange.DOWN)}>
+                <img src={ChevronLeft} alt="Left arrow chevron" />
+                Previous
+            </Button>
             <Pagination array={images} activeItem={images[activeIndex]} onClick={onJump} />
+            <Button plain={true} onClick={() => onCarousel(IChange.UP)}>
+                Next
+                <img src={ChevronRight} alt="Right arrow chevron" />
+            </Button>
         </div>
-        <button onClick={() => onCarousel(IChange.UP)}>
-            {/* <ChevronRight /> */}
-            Right
-        </button>
     </section>
 }
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { render, screen, waitFor, waitForElementToBeRemoved, } from '@testing-library/react';
+import React from 'react';
+import { render, screen, waitForElementToBeRemoved, } from '@testing-library/react';
 import Index from './Index';
 import { setupServer } from 'msw/node'
 import userEvent from '@testing-library/user-event';

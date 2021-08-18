@@ -22,22 +22,22 @@ describe('carousel smoke test', () => {
     });
 
     it('should render the carousel', () => {
-        expect(screen.getByText('Left')).toBeInTheDocument();
-        expect(screen.getByText('Right')).toBeInTheDocument();
+        expect(screen.getByText('Previous')).toBeInTheDocument();
+        expect(screen.getByText('Next')).toBeInTheDocument();
         images.forEach((_, index) => {
             expect(screen.getByText(index + 1)).toBeInTheDocument();
         })
     });
 
     it('should emit onCarousel event when right button is clicked', () => {
-        const rightButton = screen.getByText('Right');
+        const rightButton = screen.getByText('Next');
         expect(rightButton).toBeInTheDocument();
         userEvent.click(rightButton);
         expect(carousel).toBeCalledWith(IChange.UP);
     });
 
     it('should emit onCarousel event when left button is clicked', () => {
-        const leftButton = screen.getByText('Left');
+        const leftButton = screen.getByText('Previous');
         expect(leftButton).toBeInTheDocument();
         userEvent.click(leftButton);
         expect(carousel).toBeCalledWith(IChange.DOWN);
