@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface IProps {
-    text: string;
+    children: ReactNode;
     active: boolean;
+    plain?: boolean;
     onClick: () => void;
 }
 
-const Button = ({ text, active, onClick }: IProps) => (
+const Button = ({ children, active, plain = false, onClick }: IProps) => (
     <button
         onClick={onClick}
-        className={`btn ${active ? "btn--active" : ""}`}
+        className={`btn ${active ? "btn--active" : ""} ${plain ? "btn--plain" : ""}`}
     >
-        {text}
+        {children}
     </button>
 )
 

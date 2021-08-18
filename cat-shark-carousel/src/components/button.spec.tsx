@@ -6,7 +6,7 @@ import Button from './button';
 it('should click button which emits onClick event', () => {
     const onClick = jest.fn()
     render(
-        <Button text="some button" active={false} onClick={onClick} />
+        <Button active={false} onClick={onClick} >some button</Button>
     );
     const button = screen.getByText('some button');
     expect(button).toBeInTheDocument();

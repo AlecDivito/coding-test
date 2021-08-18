@@ -47,13 +47,13 @@ test('should cycle through pictures using carousel', async () => {
 
     const pictures = allResponseData;
 
-    const leftButton = screen.getByText('Left');
+    const leftButton = screen.getByText('Previous');
     userEvent.click(leftButton);
     expect(screen.getByTestId(pictures[2]).className).toStrictEqual("slide previous");
     expect(screen.getByTestId(pictures[3]).className).toStrictEqual("slide active");
     expect(screen.getByTestId(pictures[0]).className).toStrictEqual("slide next");
 
-    const rightButton = screen.getByText('Right');
+    const rightButton = screen.getByText('Next');
     userEvent.click(rightButton);
     expect(screen.getByTestId(pictures[3]).className).toStrictEqual("slide previous");
     expect(screen.getByTestId(pictures[0]).className).toStrictEqual("slide active");

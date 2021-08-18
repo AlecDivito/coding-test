@@ -47,10 +47,14 @@ const Index = () => {
             <section>
                 <Button active={state.photoTypes.includes(PhotoType.CAT)}
                     onClick={() => toggle(PhotoType.CAT)}
-                    text="Cats" />
+                >
+                    Cats
+                </Button>
                 <Button active={state.photoTypes.includes(PhotoType.SHARK)}
                     onClick={() => toggle(PhotoType.SHARK)}
-                    text="Sharks" />
+                >
+                    Sharks
+                </Button>
             </section>
         </main>
     );
