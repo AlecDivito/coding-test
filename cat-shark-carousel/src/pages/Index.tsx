@@ -18,7 +18,7 @@ const Index = () => {
             photoTypes = [...state.photoTypes, ...[photoType]];
         }
         updateParams({ params: { types: photoTypes } });
-        updateState({ ...state, ...{ photoTypes } })
+        updateState({ ...state, ...{ photoTypes, activeIndex: 0 } })
     };
 
     const updateIndex = (change: IChange) => {
@@ -32,20 +32,25 @@ const Index = () => {
     };
 
     return (
-        <main className="flex justify-around flex-columns h-100 align-center">
-            <header>
-                <h1>Dog and Sharks</h1>
+        <main className="flex flex-columns h-100 align-center">
+            <header className="flex align-center flex-columns">
+                <h1>🐈 Pictures of Ferocious Beasts 🦈</h1>
+                <h2>
+                    The ultimate repository, currently showing
+                    {state.photoTypes.length > 0 ? ` ${state.photoTypes[0].toLocaleLowerCase()}s ` : "nothing"}
+                    {state.photoTypes.length > 1 ? ` and ${state.photoTypes[1].toLocaleLowerCase()}s` : ""}
+                </h2>
             </header>
-            <section>
+            <section className="flex mb-2">
                 <Button active={state.photoTypes.includes(PhotoType.CAT)}
                     onClick={() => toggle(PhotoType.CAT)}
                 >
-                    Cats
+                    🐈 Cats
                 </Button>
                 <Button active={state.photoTypes.includes(PhotoType.SHARK)}
                     onClick={() => toggle(PhotoType.SHARK)}
                 >
-                    Sharks
+                    🦈 Sharks
                 </Button>
             </section>
             <Loading isLoading={getState.isLoading}>

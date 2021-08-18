@@ -42,22 +42,26 @@ const Carousel = ({ images, activeIndex, onCarousel, onJump }: IProps) => {
     return <section className="flex justify-around flex-columns">
         <ul className="carousel">
             {images.map((src, index) =>
-                <li className={`slide ${computeClassname(index)}`} data-testid={src} key={src}>
-                    <img src={src} alt="" />
-                </li>
+                <li key={src} data-test
+                    className={`slide ${computeClassname(index)}`} data-testid={src}
+                    style={{ backgroundImage: `url(${src})` }}
+                ></li>
             )}
+            {images.length === 0 ? <h3 className="carousel--empty">Please select the 🐈 Cat or the 🦈 Shark buttons to get started</h3> : null}
         </ul>
-        <div className="flex justify-center">
-            <Button plain={true} onClick={() => onCarousel(IChange.DOWN)}>
-                <img src={ChevronLeft} alt="Left arrow chevron" />
-                Previous
-            </Button>
-            <Pagination array={images} activeItem={images[activeIndex]} onClick={onJump} />
-            <Button plain={true} onClick={() => onCarousel(IChange.UP)}>
-                Next
-                <img src={ChevronRight} alt="Right arrow chevron" />
-            </Button>
-        </div>
+        {images.length === 0 ? null :
+            <div className="flex justify-center">
+                <Button plain={true} onClick={() => onCarousel(IChange.DOWN)}>
+                    <img src={ChevronLeft} alt="Left arrow chevron" />
+                    Previous
+                </Button>
+                <Pagination array={images} activeItem={images[activeIndex]} onClick={onJump} />
+                <Button plain={true} onClick={() => onCarousel(IChange.UP)}>
+                    Next
+                    <img src={ChevronRight} alt="Right arrow chevron" />
+                </Button>
+            </div>
+        }
     </section>
 }
 
