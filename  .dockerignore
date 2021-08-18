@@ -1,0 +1,6 @@
+/cat-shark-carousel/node_modules
+/cat-shark-carousel/build
+/cat-shark-carousel-server/node_modules
+/cat-shark-carousel-server/dist
+.dockerignore
+

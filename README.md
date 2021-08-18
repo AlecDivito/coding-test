@@ -1,4 +1,42 @@
-# Ownr Developer Candidate Coding Test
+# Completed Coding Test
+
+The coding test is divided into 2 repositories, the [cat-shark-carousel](./cat-shark-carousel)
+and the [cat-shark-carousel-server](./cat-shark-carousel-server). The non server
+repo contains the frontend which was build from use create-react-app. The backend
+uses the required express application.
+
+## Development
+
+For development, open 2 command prompts and `cd` into [cat-shark-carousel](./cat-shark-carousel)
+and [cat-shark-carousel-server](./cat-shark-carousel-server). In the frontend,
+run: `npm run start`. In the backend run the following two commands:
+
+1. npm run build
+2. npm run serve
+
+The backend doesn't refresh, so when you make changes to it, you need to stop it
+and restart it again.
+
+Also for development, there are tests on the frontend. To run them, execute the
+follow: `npm run test`.
+
+## Run Locally
+
+To run the application, just run `./run.sh`. Remember to give the correct file
+permissions for the script run (hint: `chmod 755 ./run.sh`).
+
+## Docker Container
+
+To build the container, run the following: `docker build .`. This will build our
+docker container. We're using a multi-stage build process to build the frontend
+and copy the contents of the build folder to the server.
+
+Once the image has build, run a quick `docker images` to get a list of the current
+images you have and the top most one will be the one you need to build. Run the
+following in your command line: `docker run -p 80:3000 <image-id-here>`. You will
+now be able to access the app from [http://localhost](http://localhost)
+
+## Ownr Developer Candidate Coding Test
 
 Congratulations, you have been asked to complete our Full Stack candidate proficiency test! 
 
