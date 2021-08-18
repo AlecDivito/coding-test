@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import useKeyboard from '../hooks/useKeyboard';
 import { Key } from '../types/keyboard';
+import Pagination from './pagination';
 // import ChevronLeft from '../assets/chevron_left.svg';
 // import ChevronRight from '../assets/chevron_right.svg';
 
@@ -50,9 +51,7 @@ const Carousel = ({ images, activeIndex, onCarousel, onJump }: IProps) => {
                     </li>
                 )}
             </ul>
-            <ul className="flex justify-center">
-                {images.map((value, index) => <li className="p-1" key={value} onClick={() => onJump(index)}>{index + 1}</li>)}
-            </ul>
+            <Pagination array={images} activeItem={images[activeIndex]} onClick={onJump} />
         </div>
         <button onClick={() => onCarousel(IChange.UP)}>
             {/* <ChevronRight /> */}

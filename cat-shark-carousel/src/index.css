@@ -7,15 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 html, body, #root {
   width: 100%;
   height: 100%;
-  background-color: #666;
+  background-color: #f0f0f0;
+  color: #222;
 }
 
 img {
@@ -44,6 +40,11 @@ ul {
   overflow: hidden;
   position: relative;
   background-color: #111;
+}
+
+.pagination .active {
+  border-radius: 1rem;
+  background-color: burlywood;
 }
 
 .slide {
