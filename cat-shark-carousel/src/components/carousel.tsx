@@ -47,7 +47,12 @@ const Carousel = ({ images, activeIndex, onCarousel, onJump }: IProps) => {
                     style={{ backgroundImage: `url(${src})` }}
                 ></li>
             )}
-            {images.length === 0 ? <h3 className="carousel--empty">Please select the 🐈 Cat or the 🦈 Shark buttons to get started</h3> : null}
+            {images.length === 0
+                ? <h3 className="carousel--empty">
+                    Please select the 🐈 Cat or the 🦈 Shark buttons to get started
+                </h3>
+                : null
+            }
         </ul>
         {images.length === 0 ? null :
             <div className="flex justify-center">

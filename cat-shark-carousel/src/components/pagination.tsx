@@ -21,7 +21,8 @@ const Pagination = ({ array, activeItem, pages = 5, onClick }: IProps) => {
     let firstDots = true;
     let lastDots = true;
     let snippet = [];
-
+    // Simple algorithm tries to keep the activeIndex in the middle of the
+    // pagination.
     let activeIndex = array.findIndex((value) => value === activeItem);
     let middleItem = activeIndex;
     let startingIndex = middleItem - offset - 1;

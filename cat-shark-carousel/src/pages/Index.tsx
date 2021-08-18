@@ -18,7 +18,7 @@ const Index = () => {
             photoTypes = [...state.photoTypes, ...[photoType]];
         }
         updateParams({ params: { types: photoTypes } });
-        updateState({ ...state, ...{ photoTypes, activeIndex: 0 } })
+        updateState({ photoTypes, activeIndex: 0 })
     };
 
     const updateIndex = (change: IChange) => {

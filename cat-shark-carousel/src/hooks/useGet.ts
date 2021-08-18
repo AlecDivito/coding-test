@@ -47,10 +47,15 @@ function useGet<T = any, P = any>(props: IProps): [IState<T, P>, (action: Partia
                 if (!response.ok) {
                     throw new Error(JSON.stringify(data))
                 }
-                dispatch({ data, isLoading: false, errors: undefined });
+                // Normally this set timeout would not exist here, but i've included
+                // it so that when running locally, you'll actually be able to
+                // see the loading icon. uncomment the line below to use the code
+                // that would normally be here.
+                setTimeout(() => dispatch({ data, isLoading: false }), 500);
+                // dispatch({ data, isLoading: false })
             } catch (errors) {
                 if (!abortController.signal.aborted) {
-                    dispatch({ errors: JSON.parse(errors.message), isLoading: false, data: undefined });
+                    dispatch({ errors: JSON.parse(errors.message), isLoading: false });
                 }
             }
         };
