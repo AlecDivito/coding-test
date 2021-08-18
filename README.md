@@ -17,6 +17,9 @@ run: `npm run start`. In the backend run the following two commands:
 The backend doesn't refresh, so when you make changes to it, you need to stop it
 and restart it again.
 
+Also for development, there are tests on the frontend. To run them, execute the
+follow: `npm run test`.
+
 ## Run Locally
 
 To run the application, just run `./run.sh`. Remember to give the correct file

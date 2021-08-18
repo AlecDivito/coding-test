@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, waitForElementToBeRemoved, } from '@testing-library/react';
-import Index from './Index';
+import Home from './Home';
 import { setupServer } from 'msw/node'
 import userEvent from '@testing-library/user-event';
 import { allResponseData, handlers, sharkResponseData } from '../testHandlers';
@@ -11,8 +11,8 @@ beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
-test('should render Index page', () => {
-    render(<Index />);
+test('should render Home page', () => {
+    render(<Home />);
     expect(screen.getByText("🐈 Pictures of Ferocious Beasts 🦈")).toBeInTheDocument();
     expect(screen.getByText("The ultimate repository, currently showing cats and sharks")).toBeInTheDocument();
     expect(screen.getByText('🐈 Cats')).toBeInTheDocument();
@@ -20,7 +20,7 @@ test('should render Index page', () => {
 });
 
 test('should click on cats and sharks button which results in 0 pictures', async () => {
-    render(<Index />);
+    render(<Home />);
 
     expect(screen.getByRole('alert')).toBeInTheDocument();
     await waitForElementToBeRemoved(() => screen.getByRole('alert'));
@@ -41,7 +41,7 @@ test('should click on cats and sharks button which results in 0 pictures', async
 });
 
 test('should cycle through pictures using carousel', async () => {
-    render(<Index />);
+    render(<Home />);
 
     expect(screen.getByRole('alert')).toBeInTheDocument();
     await waitForElementToBeRemoved(() => screen.getByRole('alert'));
@@ -71,8 +71,8 @@ test('should cycle through pictures using carousel', async () => {
     expect(screen.getByTestId(pictures[3]).className).toStrictEqual("slide next");
 });
 
-test('should jump to correct picture using carousel index buttons', async () => {
-    render(<Index />);
+test('should jump to correct picture using carousel Home buttons', async () => {
+    render(<Home />);
 
     expect(screen.getByRole('alert')).toBeInTheDocument();
     await waitForElementToBeRemoved(() => screen.getByRole('alert'));
