@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import useKeyboard from '../hooks/useKeyboard';
+import { Key } from '../types/keyboard';
 // import ChevronLeft from '../assets/chevron_left.svg';
 // import ChevronRight from '../assets/chevron_right.svg';
 
@@ -15,6 +17,14 @@ interface IProps {
 }
 
 const Carousel = ({ images, activeIndex, onCarousel, onJump }: IProps) => {
+    useKeyboard((event: KeyboardEvent) => {
+        const { key } = event;
+        if (key === Key.ArrowLeft) {
+            onCarousel(IChange.DOWN);
+        } else if (key === Key.ArrowRight) {
+            onCarousel(IChange.UP);
+        }
+    });
 
     const computeClassname = (index: number): string => {
         if (index === activeIndex) {

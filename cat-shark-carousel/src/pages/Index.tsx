@@ -28,8 +28,8 @@ const Index = () => {
         } else if (activeIndex >= getState.data.length) {
             activeIndex = 0;
         }
-        updateState({ ...state, ...{ activeIndex } });
-    }
+        updateState(prev => ({ ...prev, ...{ activeIndex } }));
+    };
 
     return (
         <main className="flex justify-around flex-columns h-100 align-center">

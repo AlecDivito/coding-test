@@ -40,7 +40,6 @@ function useGet<T = any, P = any>(props: IProps): [IState<T, P>, (action: Partia
         const abortController = new AbortController();
         const fetchData = async () => {
             dispatch({ isLoading: true });
-
             try {
                 const generatedUrl = buildEndpoint(parameters.endpoint!, parameters.params);
                 const response = await fetch(generatedUrl, { method: 'GET', signal: abortController.signal });
